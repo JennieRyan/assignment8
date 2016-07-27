@@ -87,7 +87,7 @@
     
 <!--6.	Rewrite the code from number 5. This time add a span tag to the web page. Display three different messages within the span tag when the user enters the div, leaves the div, or clicks on the div.-->
 <!--
-<div>This is a div</div>
+<div><span></span></div>
 
     <script type="text/javascript">
         $('document').ready(function(){
@@ -95,12 +95,12 @@
             $('div').css('width', '400px');
             $('div').css('background', 'red');
             $('div').on({
-                mouseenter: function() {
-                    window.alert("Hovered over the div!");},
-                mouseleave: function() {
-                    window.alert("The mouse left the div!");},
                 click: function() {
-                    window.alert("You clicked on the div!");}
+                    $('span').html("You clicked on the div!");},
+                mouseenter: function() {
+                    $('span').html("The mouse hovered over the div!");},
+                mouseleave: function() {
+                    $('span').html("The mouse left the div!");}
             });
         });
     </script>
