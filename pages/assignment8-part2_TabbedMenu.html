@@ -1,0 +1,120 @@
+<!doctype html>
+
+<html lang="en">
+<!--
+A jQuery Tabbed Menu Bar (10 points)	
+In this part of the assignment you will create a tabbed menu and associated panels using jQuery. The image below outlines what the final result should look similar to. To receive maximum points on this part of the assignment, be sure to take the following into account:
+1.	The tabbed menu must have a minimum of 3 tabs with 3 associated panels.
+2.	Each tab should show its respective panel when clicked. Add CSS styling to your tab menu, tabs, and panels so that it’s aesthetically pleasing.
+-->
+
+<head>
+    <meta charset="utf-8" />
+    <title>assignment8 - part2 - Tabbed</title>
+    
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-3.1.0.min.js" type="text/javascript"></script>
+    
+    <link href="../styles/main.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+        }
+        nav {
+            background-color: #333;
+        }
+        nav ul li{
+            display: inline-block;
+            border: solid 1px black;
+            background-color: lightslategrey;
+            color: white;
+            font-weight: bold;
+            margin: 1.5em;
+            padding: 1em;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 0;
+        }
+        
+        .active {
+            background-color: white;
+            border: solid 1px white;
+            color: black;
+        }
+        section {
+            padding: 10px 10px 10px 20px;
+            line-height: 2em;
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            margin-bottom: 1em;
+            margin-top: 1em;
+
+        }
+    
+    </style>
+    <head>
+    </head>
+    
+    <body>
+        <main>
+            <div>
+               <nav>
+                   <ul>
+                        <li>Tab 1</li>
+                        <li>Tab 2</li>
+                        <li>Tab 3</li>
+                   </ul>
+               </nav>
+                <section>
+                    <section id="tab1">
+                        <h3>Tab 1</h3>
+                        <p>Curabitur tincidunt sodales pretium. Pellentesque rhoncus felis ac elit dictum, at ultricies ex pretium. Aenean non odio id augue ullamcorper rhoncus eu vel purus. Proin consectetur lobortis malesuada. Quisque pulvinar accumsan imperdiet. Aenean volutpat arcu at tortor cursus, sed posuere magna fringilla. Morbi vulputate felis ex. Nunc posuere, lectus vitae eleifend viverra, leo tortor mollis ipsum, eu consectetur enim neque eget lorem</p>
+                    </section>
+                    <section id="tab2">
+                        <h3>Tab 2</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus lectus, hendrerit nec iaculis eget, efficitur eget metus. Praesent sagittis euismod arcu quis auctor. Morbi consequat, diam sed eleifend rutrum, nibh tortor scelerisque lacus, id scelerisque metus metus eu velit.Nulla volutpat gravida lorem, sed iaculis quam.Phasellus lacinia libero sit amet orci hendrerit, iaculis ornare elit vehicula. Vivamus non augue sit amet leo maximus mollis. Etiam eget odio blandit, rhoncus erat sed, aliquet sem. Aenean a libero tortor.</p>
+                    </section>
+                    <section id="tab3">
+                        <h3>Tab 3</h3>
+                        <p>Ut sit amet auctor enim. Sed velit eros, elementum at condimentum quis, efficitur quis nisi. Curabitur tortor justo, mattis venenatis neque a, tincidunt varius magna. Morbi et ante ac lacus gravida fringilla nec et dui. Ut quis consectetur quam.</p>
+                    </section>
+            </div>
+        </main>
+        
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $("#tab2").hide();
+            $("#tab3").hide();
+            $("li:first-child").addClass("active");
+            
+            $("li:first-child").on("click", function() {
+                $("li:first-child").addClass("active");
+                $("li:not(:first-child)").removeClass("active");
+                $("#tab1").show();
+                $("#tab2").hide();
+                $("#tab3").hide();
+                
+            });
+            
+            $("li:nth-child(2)").on("click", function() {
+                $("li:nth-child(2)").addClass("active");
+                $("li:not(:nth-child(2))").removeClass("active");
+                $("#tab1").hide();
+                $("#tab2").show();
+                $("#tab3").hide();
+            });
+            
+            $("li:last-child").on("click", function() {
+                $("li:last-child").addClass("active");
+                $("li:not(:last-child)").removeClass("active");
+                $("#tab1").hide();
+                $("#tab2").hide();
+                $("#tab3").show();
+            });
+        });
+        </script>
+    </body>
+</html>

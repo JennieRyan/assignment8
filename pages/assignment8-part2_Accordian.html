@@ -1,0 +1,124 @@
+<!doctype html>
+
+<html lang="en">
+<!--
+A jQuery Accordion (10 points)	
+In this part of the assignment you will create an accordion using jQuery. The image below outlines what the final result should look similar to. To receive maximum points on this part of the assignment, be sure to take the following into account:
+1.	The accordion must have a minimum of 3 headings and associated panels for each heading.
+2.	Next to the text for each heading should be a plus icon. You can use an actual icon image or just use text if you prefer. When an accordion panel is open, the icon should change just as it does in the image below. The heading style should also change including shape and color as it does in the image below.
+3.	The panels should animate into view when their respective headings are clicked. 
+-->
+ 
+<head>
+    <meta charset="utf-8" />
+    <title>assignment8 - part2 - Accordion</title>
+    
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-3.1.0.min.js" type="text/javascript"></script>
+    
+    <link href="../styles/main.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+        }
+        
+        div .closedDiv, div .activeDiv {
+            display: block;
+            border: solid 1px black;
+            color: white;
+            font-weight: bold;
+            margin: 1.5em;
+            margin-bottom: 0;
+            padding: 1em;
+        }
+        
+        .closedDiv {
+            border-radius: 10px 10px 10px 10px;
+            background-color: lightslategrey;
+
+        }
+        
+        .activeDiv {
+            border-radius: 10px 10px 0 0;
+            background-color: #666;
+        }
+    
+        .rightArrow {
+            margin-top:-.75em;
+            height: 45px;
+            width: 45px;
+            float: left;
+            background: url(../images/arrowRightSM.png) no-repeat left center;
+            margin-right: 1em;
+        }
+        
+        .downArrow {
+            margin-top:-.75em;
+            height: 45px;
+            width: 45px;
+            float: left;
+            background: url(../images/arrowDownSM.png) no-repeat left center;
+            margin-right: 1em;
+        }
+        
+        p {
+            margin: 1.5em;
+            margin-top: 0;
+            padding: 1em;
+            background-color: lightgrey;
+            border-radius: 0 0 10px 10px;
+
+        }
+    </style>
+    <head>
+    </head>
+    
+    <body>
+        <main>
+            <div>
+                <section>
+                    <div id="tab1" class="closedDiv">
+                        <div class="rightArrow"></div>
+                        <h3>Tab 1</h3>
+                    </div>
+                        <p>Curabitur tincidunt sodales pretium. Pellentesque rhoncus felis ac elit dictum, at ultricies ex pretium. Aenean non odio id augue ullamcorper rhoncus eu vel purus. Proin consectetur lobortis malesuada. Quisque pulvinar accumsan imperdiet. Aenean volutpat arcu at tortor cursus, sed posuere magna fringilla. Morbi vulputate felis ex. Nunc posuere, lectus vitae eleifend viverra, leo tortor mollis ipsum, eu consectetur enim neque eget lorem</p>
+                </section>
+                <section>
+                    <div id="tab2" class="closedDiv">
+                        <div class="rightArrow"></div>
+                        <h3>Tab 2</h3>
+                    </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus lectus, hendrerit nec iaculis eget, efficitur eget metus. Praesent sagittis euismod arcu quis auctor. Morbi consequat, diam sed eleifend rutrum, nibh tortor scelerisque lacus, id scelerisque metus metus eu velit.Nulla volutpat gravida lorem, sed iaculis quam.Phasellus lacinia libero sit amet orci hendrerit, iaculis ornare elit vehicula. Vivamus non augue sit amet leo maximus mollis. Etiam eget odio blandit, rhoncus erat sed, aliquet sem. Aenean a libero tortor.</p>
+                </section>  
+                <section>
+                    <div id="tab3" class="closedDiv">
+                        <div class="rightArrow"></div>
+                        <h3>Tab 3</h3>
+                        </div>
+                        <p>Ut sit amet auctor enim. Sed velit eros, elementum at condimentum quis, efficitur quis nisi. Curabitur tortor justo, mattis venenatis neque a, tincidunt varius magna. Morbi et ante ac lacus gravida fringilla nec et dui. Ut quis consectetur quam.</p>
+                </section>
+            </div>
+        </main>
+        
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $("p").hide();
+            
+            $("div").on("click", function() {
+               if ( $(this).hasClass("closedDiv")) {
+                   $(this).siblings("p").slideDown();
+                   $("div",this).removeClass("rightArrow").addClass("downArrow");
+                   $(this).removeClass("closedDiv").addClass("activeDiv");
+               
+               } else if ($(this).hasClass("activeDiv")) {
+                    $(this).siblings("p").slideUp();
+                    $("div",this).removeClass("downArrow").addClass("rightArrow");
+                    $(this).removeClass("activeDiv").addClass("closedDiv");
+                }
+           });
+        });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,185 @@
+<!doctype html>
+
+
+<html lang="en">
+    
+<head>
+    <meta charset="utf-8" />
+    <title>assignment8-part1a</title>
+    
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-3.1.0.min.js" type="text/javascript"></script>
+    
+    <link href="../styles/main.css" type="text/css" rel="stylesheet" />
+
+</head>
+
+
+<body>
+    <header>  
+        
+    </header>
+<!--1.	Create a button on a web page. Use the .click() method to display an alert message to the user indicating that the button has been clicked when the button is actually clicked. -->
+    
+<!--
+    <button id="myButton">Click Me</button>
+    <script type="text/javascript">
+        $("#myButton").click(function(event) {
+            alert("The button has been clicked.");
+        });
+    </script>
+-->
+        
+<!--2.	Create a button on a web page. Attach the click event using the .bind() method to display an alert message to the user indicating that the button has been clicked when the button is actually clicked. -->
+    
+<!--
+    <button id="myButton">Click Me</button>
+    <script type="text/javascript">
+        $("#myButton").bind("click", function(event) {
+            alert("The button has been clicked.");
+        });
+    </script>
+-->
+    
+<!--3.	Create a button on a web page. Attach the click event using the .on() method to display an alert message to the user indicating that the button has been clicked when the button is actually clicked. -->
+    
+<!--
+    <button id="myButton">Click Me</button>
+    <script type="text/javascript">
+        $("#myButton").on("click", function(event) {
+            alert("The button has been clicked.");
+        });
+    </script>
+-->
+    
+<!--4.	Create two buttons on a web page. Attach the click event to both buttons using a single handler using the .on() method. Again, an alert message should be displayed to the user indicating that a button has been clicked when either of the buttons are actually clicked. -->
+    
+<!--
+    <button class="myButton">Click Me</button>
+    <button class="myButton">Click Me</button>
+
+    <script type="text/javascript">
+        $(".myButton").on("click", function(event) {
+            alert("The button has been clicked.");
+        });
+    </script>
+-->
+    
+    
+<!--5.	Create a div on a web page. Use jQuery to set the div element to 400px wide and 400px high. Attach the click, mouseenter, and mouseleave events using the .on() method. Display an alert message to the user indicating that the div was either clicked on, the mouse entered it, or the mouse left it. -->
+
+<!--
+<div>This is a div</div>
+
+    <script type="text/javascript">
+        $('document').ready(function(){
+            $('div').css('height', '400px');
+            $('div').css('width', '400px');
+            $('div').css('background', 'red');
+            $("div").on("mouseenter mouseleave click", function() {
+                window.alert("the div was either clicked on, the mouse entered it, or the mouse left it!");
+            });
+        });
+    </script>
+-->
+    
+<!--6.	Rewrite the code from number 5. This time add a span tag to the web page. Display three different messages within the span tag when the user enters the div, leaves the div, or clicks on the div.-->
+<!--
+<div>This is a div</div>
+
+    <script type="text/javascript">
+        $('document').ready(function(){
+            $('div').css('height', '400px');
+            $('div').css('width', '400px');
+            $('div').css('background', 'red');
+            $('div').on({
+                mouseenter: function() {
+                    window.alert("Hovered over the div!");},
+                mouseleave: function() {
+                    window.alert("The mouse left the div!");},
+                click: function() {
+                    window.alert("You clicked on the div!");}
+            });
+        });
+    </script>
+-->
+<!--7.	Create a link within the web page and set its href attribute to browse to google.com. When the user clicks the link, first, prevent it from redirecting to that web site. Second, programmatically style the link so that its color changes to red. Third, display the name of the node that triggered the event within an alert box.-->
+<!--
+    <a href="http://www.google.com" target="_blank">Click Here To Google</a>
+    
+        <script type="text/javascript">
+            $('document').ready(function(){
+                $("a").on("click", function(event) {
+                event.preventDefault();
+                $("a").css("color", "red");
+                window.alert(event.currentTarget.tagName);
+            });
+        });
+    </script>
+-->
+<!--8.	Create a div tag within the web page. As the user resizes the browser, display the width and height of the browser window within the div tag.-->
+
+<!--
+    <div></div>
+    
+    <script type="text/javascript">
+    $(document).ready(function(event) {
+        $("div").css('background', 'red');
+        $(window).resize(function() {
+            $("div").text("The width is: " + $(window).width() + "\n");
+            $("div").append("The height is: " + $(window).height());
+        });
+    });
+    </script>
+-->
+    
+<!--9.	Create a text field using the <input> tag. When the input has focus, set the background to a light gray color. When the input does not have focus, reset the background back to a white color.-->
+<!--
+    <input id="textBox" type="text" placeholder="blah blah" />
+    
+    <script type="text/javascript">
+    $(document).ready(function(event) {
+        $("#textBox").focusin(function() {
+            $("#textBox").css("background-color", "lightgrey");
+        })
+        $("#textBox").focusout(function() {
+            $("#textBox").css("background-color", "white");
+        })
+    });
+    </script>
+-->
+<!--10.	Add a form tag within a web page complete with 2 input fields: one that collects name and a second that collects an email. Add a submit button. When the user submits the form, if any one of the two fields is left empty, display an alert box to the user indicating that the fields are required. Give the field that the user left empty a red border. If both fields have values in them, set their borders to green.-->
+    
+<!--
+    <form>
+        <input id="name" type="text" placeholder="Enter Your Name">
+        <input id="email" type="text" placeholder="youremail@email.com">
+        <button id="submit" type="button">Submit</button>
+    </form>
+
+    <script>
+    $(document).ready(function(event) {
+        $("#submit").on("click", function() {
+            
+            if ($("#name").val().length === 0 && $("#email").val().length === 0) {
+                $("#name").css("border-color", "red");
+                $("#email").css("border-color", "red");
+                 window.alert("Please fill in the form before submitting");
+            } else if ($("#name").val().length === 0) {
+                $("#name").css("border-color", "red");
+                window.alert("Your name is required");
+            } else if ($("#email").val().length === 0) {
+                $("#email").css("border-color", "red");
+                window.alert("Your email is required");
+            } else {
+                $("#name").css("border-color", "green");
+                $("#email").css("border-color", "green");
+            }
+        })
+    });
+    </script>
+-->
+</body>
+</html>
